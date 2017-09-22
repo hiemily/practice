@@ -19,10 +19,10 @@ struct mountainInfo {
 
 /**
  * TODO LIST
- - searchbar 추가
- - refreshcontroller 추가 (runtime error 해결)
+ - searchbar 추가 : done
+ - refreshcontroller 추가 (runtime error 해결필요)
  - indicator 추가
- - didselect -> 화면 푸시, 산 정보 상세 조회
+ - didselect -> 화면 푸시, 산 정보 상세 조회 (지도API로 지도를 표시해볼까?)
  */
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {//}, UISearchResultsUpdating {
 

@@ -31,12 +31,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var mList = [mountainInfo]()
     var refreshControl : UIRefreshControl!
-    var isSearching : Bool!
+    var isSearching = false
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController!.isNavigationBarHidden = true
+        
         searchBar.placeholder = "알고 싶은 산 이름을 입력하세요."
         tableview.tableHeaderView = searchBar
         // set up searchController
@@ -54,7 +56,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if self.navigationController!.isNavigationBarHidden == false {
+            self.navigationController!.isNavigationBarHidden = true
+        }
+        
         getMountainInfo(nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+
+        if let indexPath = tableview.indexPath(for: cell) {
+            let selectedMountain = mList[indexPath.row]
+            
+            print("selected name : \(selectedMountain.mName!)")
+            
+            if let viewController = segue.destination as? KMInfoDetailViewController {
+                viewController.mInfo = selectedMountain
+            }
+        }
     }
     
     func updateSearchResults(for searchController: UISearchController) {

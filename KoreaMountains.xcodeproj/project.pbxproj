@@ -13,6 +13,7 @@
 		A10E14561F64FB36007DC661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10E14551F64FB36007DC661 /* Assets.xcassets */; };
 		A10E14591F64FB36007DC661 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A10E14571F64FB36007DC661 /* LaunchScreen.storyboard */; };
 		A1933B871F6503030048916E /* KMApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1933B861F6503030048916E /* KMApiRequest.swift */; };
+		A198E6661F777234000A7137 /* KMInfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A198E6651F777234000A7137 /* KMInfoDetailViewController.swift */; };
 		B51FD7B57E5FC382704D4376 /* Pods_KoreaMountains.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B7E4F95960813606EE6809C /* Pods_KoreaMountains.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		A10E14581F64FB36007DC661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A10E145A1F64FB36007DC661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1933B861F6503030048916E /* KMApiRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMApiRequest.swift; sourceTree = "<group>"; };
+		A198E6651F777234000A7137 /* KMInfoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMInfoDetailViewController.swift; sourceTree = "<group>"; };
 		CAB489D7DA77B778C3248500 /* Pods-KoreaMountains.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KoreaMountains.release.xcconfig"; path = "Pods/Target Support Files/Pods-KoreaMountains/Pods-KoreaMountains.release.xcconfig"; sourceTree = "<group>"; };
 		F54FBCFFE7ECEB6950284F19 /* Pods-KoreaMountains.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KoreaMountains.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KoreaMountains/Pods-KoreaMountains.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 				A10E14571F64FB36007DC661 /* LaunchScreen.storyboard */,
 				A10E145A1F64FB36007DC661 /* Info.plist */,
 				A1933B861F6503030048916E /* KMApiRequest.swift */,
+				A198E6651F777234000A7137 /* KMInfoDetailViewController.swift */,
 			);
 			path = KoreaMountains;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			files = (
 				A10E14511F64FB36007DC661 /* ViewController.swift in Sources */,
 				A10E144F1F64FB36007DC661 /* AppDelegate.swift in Sources */,
+				A198E6661F777234000A7137 /* KMInfoDetailViewController.swift in Sources */,
 				A1933B871F6503030048916E /* KMApiRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

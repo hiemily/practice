@@ -32,7 +32,7 @@ class KMApiRequest: NSObject {
                         let response = result["response"] as? [String:Any],
                         let body = response["body"] as? [String:Any],
                         let items = body["items"] as? [String:Any]
-                    {
+                        {
                         completion(items);
                     }
                 case .failure(let error):

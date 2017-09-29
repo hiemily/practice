@@ -13,7 +13,7 @@ class KMApiRequest: NSObject {
     let baseUrl = "http://apis.data.go.kr/1400000/service/cultureInfoService"
     let requestId = "pZRIlvGmqCF7sJsIByGFWhK/h6C472Dhjm5VaCvlLdoJnrWTg7dYj061fhc0UzVjPLXYAGQ0lwaSduaILwSksQ=="
     
-    func requestGetUrl(uri:String, params: [String:String]?, completion: @escaping ([String:Any]) -> ()) {
+    func requestGetUrl(uri:String, params: [String:String]?, completion: @escaping ([String:Any]?) -> ()) {
         let urlStr = baseUrl + uri
         var parameters = [String : String]()
         
@@ -33,7 +33,10 @@ class KMApiRequest: NSObject {
                         let body = response["body"] as? [String:Any],
                         let items = body["items"] as? [String:Any]
                         {
-                        completion(items);
+                        completion(items)
+                    } else {
+                        print("\(String(describing: DataResponse.value!))")
+                        completion(nil)
                     }
                 case .failure(let error):
                     print(error)

@@ -32,6 +32,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var mList = [mountainInfo]()
     var refreshControl : UIRefreshControl!
     var isSearching = false
+    var isDataLoaded = false
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -60,7 +61,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.navigationController!.isNavigationBarHidden = true
         }
         
-        getMountainInfo(nil)
+        if isDataLoaded == false {
+            getMountainInfo(nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -128,8 +131,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let userRequest = KMApiRequest()
         
         userRequest.requestGetUrl(uri:"/mntInfoOpenAPI", params: parameters, completion: { json in
+            self.isDataLoaded = true
             
-            if let items = json["item"] as? [[String:Any]] {
+            if  let json = json,
+                let items = json["item"] as? [[String:Any]] {
                 for item in items {
                     var mountain = mountainInfo()
                     mountain = self.makeMInfoObject(obj: item)
@@ -137,7 +142,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
                 self.isSearching = false
                 self.tableview.reloadData()
-            } else if let item = json["item"] as? [String:Any] {
+            } else if let json = json,
+                let item = json["item"] as? [String:Any] {
                 var mountain = mountainInfo()
                 mountain = self.makeMInfoObject(obj: item)
                 self.mList.append(mountain)
@@ -153,17 +159,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         if let name = obj["mntiname"] as? String {
             mountain.mName = name
-            print("name : \(name)")
         }
         
         if let id = obj["mntilistno"] as? Int {
             mountain.mId = id
-            print("id : \(id)")
         }
         
         if let addr = obj["mntiadd"] as? String {
             mountain.mAddr = addr
-            print("addr : \(addr)")
         }
         
         if let detail = obj["mntidetails"] as? String {

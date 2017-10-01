@@ -77,10 +77,11 @@ class KMInfoDetailViewController: UIViewController {
                         i += 1;
                     }
                 }
-                
+                self.imagesScrollView!.contentSize = CGSize(width:self.imagesScrollView.frame.size.width * CGFloat(items.count), height:self.imagesScrollView.frame.height)
             } else if let json = json,
                 let item = json["item"] as? [String:Any] {
                 var mImage = mountainImg()
+                
                 mImage = self.makeMImgObject(obj: item)
                 self.mImageArr.append(mImage)
                 

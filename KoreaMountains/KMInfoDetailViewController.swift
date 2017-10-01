@@ -25,7 +25,8 @@ class KMInfoDetailViewController: UIViewController {
     var mInfo : mountainInfo?
     var mImageArr = [mountainImg]()
     let imgUrl = "http://www.forest.go.kr/images/data/down/mountain/"
-    
+    var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +45,13 @@ class KMInfoDetailViewController: UIViewController {
     }
     
     func getMountainImage() {
+        actInd.frame = CGRect(x:0.0, y:0.0, width:40.0, height:40.0);
+        actInd.center = self.view.center
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.view.addSubview(actInd)
+        actInd.startAnimating()
+        
         mDescriptionLabel.text = mInfo!.mDetail
 
         var parameters = [String : String]()
@@ -101,6 +109,8 @@ class KMInfoDetailViewController: UIViewController {
                 self.imagesScrollView!.removeFromSuperview()
                 self.imageTitleLabel!.removeFromSuperview()
             }
+            
+            self.actInd.stopAnimating()
         })
     }
     

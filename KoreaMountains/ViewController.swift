@@ -33,6 +33,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var refreshControl : UIRefreshControl!
     var isSearching = false
     var isDataLoaded = false
+    var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -120,6 +122,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func getMountainInfo(_ searchKeyword : String?) {
+        actInd.frame = CGRect(x:0.0, y:0.0, width:100.0, height:40.0);
+        actInd.center = self.view.center
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.view.addSubview(actInd)
+        actInd.startAnimating()
+        
         var parameters = [String : String]()
         if let searchKeyword = searchKeyword
         {
@@ -151,6 +160,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.isSearching = false
                 self.tableview.reloadData()
             }
+            
+            self.actInd.stopAnimating()
         })
     }
     

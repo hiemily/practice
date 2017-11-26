@@ -8,13 +8,18 @@
 
 import UIKit
 
-struct mountainInfo {
-    var mId:Int?        //산정보코드
-    var mName:String?   //산명
+class mountainInfo {
+    var mId:Int        //산정보코드
+    var mName:String   //산명
     var mAddr:String?   //소재지
     var mTop:String?    //명산
     var mSummary:String?    //산정보개관
     var mDetail:String? //산정보 상세
+    
+    init(mId : Int, mName : String) {
+        self.mId = mId
+        self.mName = mName
+    }
 }
 
 /**
@@ -44,16 +49,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         searchBar.placeholder = "알고 싶은 산 이름을 입력하세요."
         tableview.tableHeaderView = searchBar
-        // set up searchController
-//        searchController.searchResultsUpdater = self
-//        searchController.dimsBackgroundDuringPresentation = true
-//        tableview.tableHeaderView = searchController.searchBar
-        
-        // set up refreshController
-//        refreshControl = UIRefreshControl()
-//        tableview.refreshControl = refreshControl
-//        
-//        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +69,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if let indexPath = tableview.indexPath(for: cell) {
             let selectedMountain = mList[indexPath.row]
             
-            print("selected name : \(selectedMountain.mName!)")
+            print("selected name : \(selectedMountain.mName)")
             
             if let viewController = segue.destination as? KMInfoDetailViewController {
                 viewController.mInfo = selectedMountain
@@ -145,16 +140,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             if  let json = json,
                 let items = json["item"] as? [[String:Any]] {
                 for item in items {
-                    var mountain = mountainInfo()
-                    mountain = self.makeMInfoObject(obj: item)
+                    let mountain = self.makeMInfoObject(obj: item)
                     self.mList.append(mountain)
                 }
                 self.isSearching = false
                 self.tableview.reloadData()
             } else if let json = json,
                 let item = json["item"] as? [String:Any] {
-                var mountain = mountainInfo()
-                mountain = self.makeMInfoObject(obj: item)
+                let mountain = self.makeMInfoObject(obj: item)
                 self.mList.append(mountain)
                 
                 self.isSearching = false
@@ -166,15 +159,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func makeMInfoObject(obj:[String:Any]) -> mountainInfo {
-        var mountain = mountainInfo()
-        
-        if let name = obj["mntiname"] as? String {
-            mountain.mName = name
-        }
-        
-        if let id = obj["mntilistno"] as? Int {
-            mountain.mId = id
-        }
+        let mountain = mountainInfo(mId:obj["mntilistno"] as! Int, mName:obj["mntiname"] as! String)
         
         if let addr = obj["mntiadd"] as? String {
             mountain.mAddr = addr
@@ -191,7 +176,5 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

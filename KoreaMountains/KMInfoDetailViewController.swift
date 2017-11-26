@@ -56,7 +56,7 @@ class KMInfoDetailViewController: UIViewController {
 
         var parameters = [String : String]()
         if let mInfo = mInfo {
-            parameters["mntiListNo"] = String(describing: mInfo.mId!)
+            parameters["mntiListNo"] = String(describing: mInfo.mId)
         }
         
         let userRequest = KMApiRequest()

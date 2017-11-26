@@ -1,14 +1,14 @@
 PODS:
-  - Alamofire (4.5.0)
-  - Nuke (5.1.1)
+  - Alamofire (4.5.1)
+  - Nuke (5.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
   - Nuke (~> 5.0)
 
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  Nuke: 0a2ddb4bd13d75782964bf598a159ca2a836d826
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Nuke: 5f420c4637415f979c83afb35e73176dd03232d9
 
 PODFILE CHECKSUM: 340455c38b5e61eb525e153f05c26bf5fc44d997
 

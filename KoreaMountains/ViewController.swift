@@ -47,7 +47,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
         self.navigationController!.isNavigationBarHidden = true
         
-        searchBar.placeholder = "알고 싶은 산 이름을 입력하세요."
+        searchBar.placeholder = "알고 싶은 산 이름을 입력하세요....."
         tableview.tableHeaderView = searchBar
     }
 
